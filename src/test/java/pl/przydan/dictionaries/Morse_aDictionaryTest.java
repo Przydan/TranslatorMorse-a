@@ -13,7 +13,20 @@ public class Morse_aDictionaryTest {
 
         String expected = ".-";
         // when
-        String result = dictionary.translate('A');
+        String result = dictionary.translate("A");
+
+        // then
+        assertEquals(expected,result);
+    }
+
+    @Test
+    public void translateShouldReturnTranslatedStringWhenStringIsGiven() {
+        // given
+        Dictionary dictionary = new Morse_aDictionary();
+
+        String expected = "... --- ... / ... --- ... ";
+        // when
+        String result = dictionary.translate("sos sos");
 
         // then
         assertEquals(expected,result);

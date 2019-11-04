@@ -4,6 +4,8 @@ package pl.przydan.dictionaries;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static java.lang.Character.toUpperCase;
+
 public class Morse_aDictionary implements Dictionary {
     private static Map<Character, String> Morse_aCharacters;
 
@@ -20,6 +22,7 @@ public class Morse_aDictionary implements Dictionary {
         Morse_aCharacters.put('F', "..-.");
         Morse_aCharacters.put('G', "--.");
         Morse_aCharacters.put('H', "....");
+        Morse_aCharacters.put('I', "..");
         Morse_aCharacters.put('J', ".---");
         Morse_aCharacters.put('K', "-.-");
         Morse_aCharacters.put('L', ".-..");
@@ -53,12 +56,16 @@ public class Morse_aDictionary implements Dictionary {
         Morse_aCharacters.put('7', "--...");
         Morse_aCharacters.put('8', "---..");
         Morse_aCharacters.put('9', "----.");
-        Morse_aCharacters.put(' ', ".-..-");
+        Morse_aCharacters.put(' ', "/"); // ".-..-"
         Morse_aCharacters.put('.', ".-.-.-");
     }
 
     @Override
-    public String translate(Character character) {
+    public String translate(String sentence) {
+        return getTranslatedString(sentence);
+    }
+
+    private String getString(Character character) {
         String value;
         return value = Morse_aCharacters
                 .entrySet()
@@ -67,6 +74,17 @@ public class Morse_aDictionary implements Dictionary {
                 .findFirst()
                 .map(characterStringEntry -> characterStringEntry.getValue())
                 .orElse("");
+    }
+
+    private String getTranslatedString(String word) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String translatedWord = "";
+
+        for (int i = 0; i < word.length(); i++) {
+            char character = word.charAt(i);
+            translatedWord = stringBuilder.append(getString(toUpperCase(character))).append(" ").toString();
+        }
+        return translatedWord;
     }
 
 }

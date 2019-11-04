@@ -9,26 +9,24 @@ import static java.lang.Character.toUpperCase;
  * Morse'a translator
  * by Przydan
  */
-// TODO: reverse translation, make factory, add secondLanguage
+// TODO: reverse translation, make factory, add secondLanguage( Greka lub Braille'a)
 
 public class App {
     public static void main(String[] args) {
 
         Dictionary dictionary = new Morse_aDictionary();
-        StringBuilder stringBuilder = new StringBuilder();
 
-        String word = "test sos";
-        String translatedWord = "";
 
-        for (int i = 0; i < word.length(); i++) {
-            char character = word.charAt(i);
-            translatedWord = stringBuilder.append(dictionary.translate(toUpperCase(character))).append(" ").toString();
-        }
+        String sentence = "Litwo ojczyzno ty moja";
 
-        System.out.println("Wyrażenie do przetłumaczenia: " + word);
+        String translatedWord = dictionary.translate(sentence);
+
+        System.out.println("Wyrażenie do przetłumaczenia: " + sentence);
 
         System.out.println("Wyrażenie zapisane alfabetem morsa: " + translatedWord);
 
 
     }
+
+
 }

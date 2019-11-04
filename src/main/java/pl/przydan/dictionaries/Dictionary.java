@@ -1,5 +1,5 @@
 package pl.przydan.dictionaries;
 
 public interface Dictionary {
-    String translate(Character character);
+    String translate(String sentence);
 }
