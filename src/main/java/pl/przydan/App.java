@@ -15,7 +15,7 @@ public class App {
         StringBuilder stringBuilder = new StringBuilder();
 
 
-        String word = "Aleksandra i Patryk";
+        String word = "test sos";
         String translatedWord = "";
 
         for (int i = 0; i < word.length(); i++) {
