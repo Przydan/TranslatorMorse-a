@@ -1,6 +1,5 @@
 package pl.przydan.dictionaries;
 
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -65,26 +64,27 @@ public class Morse_aDictionary implements Dictionary {
         return getTranslatedString(sentence);
     }
 
-    private String getString(Character character) {
-        String value;
-        return value = Morse_aCharacters
-                .entrySet()
-                .stream()
-                .filter(e -> e.getKey().equals(character))
-                .findFirst()
-                .map(characterStringEntry -> characterStringEntry.getValue())
-                .orElse("");
-    }
-
     private String getTranslatedString(String word) {
         StringBuilder stringBuilder = new StringBuilder();
         String translatedWord = "";
 
         for (int i = 0; i < word.length(); i++) {
             char character = word.charAt(i);
-            translatedWord = stringBuilder.append(getString(toUpperCase(character))).append(" ").toString();
+            translatedWord = stringBuilder
+                    .append(getString(toUpperCase(character)))
+                    .append(" ") // can be deleted
+                    .toString();
         }
         return translatedWord;
     }
 
+    private String getString(Character character) {
+        return Morse_aCharacters
+                .entrySet()
+                .stream()
+                .filter(e -> e.getKey().equals(character))
+                .findFirst()
+                .map(Map.Entry::getValue)
+                .orElse("Brak znaku w słowniku");
+    }
 }
